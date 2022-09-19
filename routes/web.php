@@ -29,7 +29,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('MyChirp', [
-        'chirps' => Chirp::all()->where('user_id', Auth::id())
+        'chirps' => Chirp::with('user')->where('user_id', Auth::id())->get()
     ]);
 })->middleware(['auth', 'verified'])->name('my-chirp');
 
