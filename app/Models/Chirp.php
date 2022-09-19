@@ -13,6 +13,10 @@ class Chirp extends Model
         'message'
     ];
 
+    protected $dispatchesEvents = [
+        'created' => ChirpCreated::class,
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
